@@ -20,13 +20,13 @@ input.addEventListener('keydown', (event) => {
 async function fetchCountry(name) {
   result.innerHTML = '<p class="info">Consultando información...</p>';
   try {
-    const response = await fetch(`https://restcountries.com/v3.1/name/${encodeURIComponent(name)}?fullText=true`);
+    const response = await fetch(`/api/country?name=${encodeURIComponent(name)}`);
     if (!response.ok) {
       if (response.status === 404) {
         showError('País no encontrado');
         return;
       }
-      throw new Error('Error en la respuesta de la API');
+      throw new Error('Error en la respuesta del servidor');
     }
 
     const data = await response.json();

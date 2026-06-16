@@ -1,0 +1,11 @@
+{
+  "name": "buscador-de-paises",
+  "version": "1.0.0",
+  "description": "Buscador de países usando Node.js y la API de restcountries",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
