@@ -18,10 +18,27 @@ function sendResponse(res, statusCode, data, contentType) {
   res.end(data);
 }
 
-function fetchCountry(countryName) {
+function fetchCountry(countryName, redirectCount = 0) {
   const url = `https://restcountries.com/v3.1/name/${encodeURIComponent(countryName)}?fullText=true`;
+  return fetchUrl(url, redirectCount);
+}
+
+function fetchUrl(url, redirectCount) {
   return new Promise((resolve, reject) => {
     https.get(url, (apiRes) => {
+      if ([301, 302, 303, 307, 308].includes(apiRes.statusCode)) {
+        if (redirectCount >= 5 || !apiRes.headers.location) {
+          const error = new Error('Too many redirects or missing location header');
+          error.status = apiRes.statusCode;
+          reject(error);
+          return;
+        }
+
+        const nextUrl = new URL(apiRes.headers.location, url).toString();
+        resolve(fetchUrl(nextUrl, redirectCount + 1));
+        return;
+      }
+
       let body = '';
       apiRes.on('data', (chunk) => { body += chunk; });
       apiRes.on('end', () => {
