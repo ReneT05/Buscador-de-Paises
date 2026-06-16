@@ -1,0 +1,149 @@
+:root {
+  --bg: #2a0b3e;
+  --card-bg: #3d1465;
+  --accent: #8b5cf6;
+  --text: #f7f3ff;
+  --muted: #d6c8ff;
+  --border: rgba(255, 255, 255, 0.15);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: radial-gradient(circle at top, #5b3fcc 0%, #2a0b3e 60%);
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.container {
+  width: 100%;
+  max-width: 560px;
+}
+
+h1 {
+  margin: 0 0 20px;
+  font-size: clamp(2rem, 4vw, 3rem);
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.search-card,
+.result-card {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  padding: 24px;
+}
+
+.search-card {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 12px;
+  font-size: 1rem;
+  color: var(--muted);
+}
+
+.input-group {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+input {
+  flex: 1 1 220px;
+  min-width: 0;
+  padding: 14px 16px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text);
+  font-size: 1rem;
+}
+
+input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+button {
+  padding: 14px 24px;
+  border: none;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #a855f7, #7c3aed);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(139, 92, 246, 0.3);
+}
+
+.result-card {
+  min-height: 220px;
+}
+
+.info {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.country-name {
+  margin: 0 0 18px;
+  font-size: 1.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.country-data {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.country-data p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.country-flag {
+  width: 100%;
+  max-width: 320px;
+  display: block;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.error {
+  color: #ffb3d9;
+  font-weight: 700;
+}
+
+@media (max-width: 520px) {
+  .search-card,
+  .result-card {
+    padding: 18px;
+  }
+
+  button {
+    width: 100%;
+  }
+}
